@@ -89,7 +89,7 @@
     
     <input type="color" id="colorPicker" onchange="updateColor()">
 
-    <div class="color-code" id="colorCode">الكود اللوني: </div>
+    <div class="color-code" id="colorCode">color code: </div>
 
     <div class="color-output">
      <!--   <label for="colorInput"></label>-->
@@ -109,7 +109,7 @@
         function updateColor() {
             const color = colorPicker.value;
             colorBox.style.backgroundColor = color;
-            colorCode.textContent = `الكود اللوني: ${color}`;
+            colorCode.textContent = `color code: ${color}`;
             colorInput.value = color;
         }
 
@@ -117,20 +117,21 @@
             const color = colorInput.value;
             colorBox.style.backgroundColor = color;
             colorPicker.value = color;
-            colorCode.textContent = `الكود اللوني: ${color}`;
+            colorCode.textContent = `color code: ${color}`;
         }
 
           if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
             .then(function(registration) {
-                console.log('Service Worker مسجل بنجاح:', registration);
+                console.log('Service Worker done:', registration);
             })
             .catch(function(error) {
-                console.log('فشل تسجيل Service Worker:', error);
+                console.log('faild Service Worker:', error);
             });
     }
     </script>
 
 </body>
 </html>
+
 
