@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorCode</title>
+<link rel="manifest" href="manifest.json">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #4B0082;
+            margin-bottom: 20px;
+        }
+
+        .color-box {
+            width: 250px;
+            height: 250px;
+            margin: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="color"] {
+            width: 250px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-code {
+            font-size: 20px;
+            color: #4B0082;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .color-output {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 250px;
+            height: 40px;
+            padding: 5px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4B0082;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #4B0082;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ColorCode</h1>
+
+    <div class="color-box" id="colorBox"></div>
+    
+    <input type="color" id="colorPicker" onchange="updateColor()">
+
+    <div class="color-code" id="colorCode">الكود اللوني: </div>
+
+    <div class="color-output">
+     <!--   <label for="colorInput"></label>-->
+        <input type="text" id="colorInput" oninput="updateBoxFromCode()">
+    </div>
+
+    <div class="footer">
+        <p>created by <strong><a href="https://www.instagram.com/meduria.design11/" target="_blank">Omar</a></strong></p>
+    </div>
+
+    <script>
+        const colorBox = document.getElementById('colorBox');
+        const colorPicker = document.getElementById('colorPicker');
+        const colorCode = document.getElementById('colorCode');
+        const colorInput = document.getElementById('colorInput');
+
+        function updateColor() {
+            const color = colorPicker.value;
+            colorBox.style.backgroundColor = color;
+            colorCode.textContent = `الكود اللوني: ${color}`;
+            colorInput.value = color;
+        }
+
+        function updateBoxFromCode() {
+            const color = colorInput.value;
+            colorBox.style.backgroundColor = color;
+            colorPicker.value = color;
+            colorCode.textContent = `الكود اللوني: ${color}`;
+        }
+
+          if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker مسجل بنجاح:', registration);
+            })
+            .catch(function(error) {
+                console.log('فشل تسجيل Service Worker:', error);
+            });
+    }
+    </script>
+
+</body>
+</html>
